@@ -1,178 +1,27 @@
-h1 {
-    font-family: monospace;
-    align-items: center;
-    justify-content: center;
-    font-weight: bold;
-    font-size: 4rem;
-    color: #fff;
-    text-shadow: 4px 6px 16px #000c, 0 2px 8px #000a;
-}
-
-h2 {
-    font-family: monospace;
-    justify-content: center;
-    font-weight: bold;
-    font-size: 1rem;
-    color: #6270e9;
-    align-items: center;
-    text-shadow: 4px 6px 16px #000c, 0 2px 8px #000a;
-}
-
-/* Reset and box-sizing for consistency */
-html, body {
-    margin: 0;
-    padding: 0;
-    background-color: #000;
-    box-sizing: border-box;
-    height: auto;
-}
-*, *:before, *:after {
-    box-sizing: inherit;
+.p 
+{
+    color: #fff !important;
 }
 
 body {
-    width: 100vw;
-    margin: 0;
-    padding: 0;
-    /* Remove height/min-height, let .main-flex control height */
-}
-
-.main-flex {
-    display: flex;
-    flex-direction: column;      /* Stack children vertically */
-    align-items: center;         /* Center children horizontally */
-    justify-content: flex-start; /* Align to top */
-    width: 100vw;
-    min-height: 100dvh;
-    gap: 32px;
-    margin: 0;
-    padding: 0;
-    background: transparent;
-}
-
-.column {
-    display: flex;
-    flex-direction: column;
-    align-items: center; /* Center content horizontally */
-    justify-content: center; /* Center content vertically */
-    width: 100%;
-    height: auto; /* Let content define height */
-    margin: 0;
-    padding: 0;
-}
-
-.flexbox-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-    min-width: 400px;
-    max-width: 700px;
-    width: 100%;
-    margin: 0;
-    padding: 0;
-    background: transparent;
-}
-
-.flexbox-item {
-    width: 100%;
-    
-}
-.flexbox-item-1{
-    border: #fff 3px solid; /* Add a border to the container */
-
-    
-
-
-}
-.flexbox-item-2{
-
-    background-image: url('/images/brain.png');
-    background-size: contain; /* or cover, or 80% */
-    background-repeat: repeat;
-    background-position: center;
-    
-}
-.flexbox-item-3{
-    align-items: center;
-    background: linear-gradient(rgba(221, 93, 138, 0.514), rgba(207, 188, 233, 0));
-    
-
-}
-.flexbox-item-4{
-    align-items: center;
-    
-}
-.flexbox-item-5{
-    align-items: center;
-    
+    background-color: #000000 !important;
 
 }
 
-.flexbox-item-7 {
-    width: 100%;
-    height: 10px;
-
-
+.navbar {
+    background:#1fe1aa;
 }
-
-.flexbox-item-1,
-.flexbox-item-2,
-.flexbox-item-3,
-.flexbox-item-4,
-.flexbox-item-5 {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-}
-
-.profile {
-    display: flex;
-    flex-direction: column;
-    align-items: center; /* Center content horizontally */
-    justify-content: flex-start; /* Top align content */
-    margin: 32px 0 0 0; /* Larger top margin */
-    width: 700px;        /* Much wider */
-    min-width: 400px;
-    z-index: 2;
-    height: auto;
-}
-
-.profile-img {
-    height: 420px;       /* Much taller image */
-    width: 100%;
-    background-image: url('/images/doggo.png');
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
-    display: block;
-}
-
-.profile-txt {
-    width: 95%;
-    font-family: monospace;
-    font-weight: bold;
-    font-size: 1.5rem;   /* Much larger font */
-    color: #c6c8d3;
-    text-shadow: 4px 6px 16px #000c, 0 2px 8px #000a;
-    margin-top: 24px;    /* Larger gap */
-}
-
-.site-nav {
-    text-align: center;
-    margin-bottom: 1.5rem;
-    font-family: monospace;
-    font-size: 1.1rem;
-}
-.site-nav a {
+.nav-link,
+.navbar-brand {
     color: #fff;
-    text-decoration: none;
-    margin: 0 0.5em;
-    transition: color 0.2s;
+    cursor: pointer;
 }
-.site-nav a:hover {
-    color: #6270e9;
+.nav-link {
+    margin-right: 1em !important;
 }
-
+.nav-link:hover {
+    color: #000;
+}
+.navbar-collapse {
+    justify-content: flex-end;
+}
