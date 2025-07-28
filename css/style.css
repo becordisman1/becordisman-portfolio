@@ -4,24 +4,46 @@
 }
 
 body {
-    background-color: #000000 !important;
+    min-height: 100vh;
+    background: linear-gradient(66deg, #000000, #000000);
+    background-repeat: no-repeat;
+    background-size: cover;
 
 }
 
 .navbar {
-    background:#e1b71f;
+    min-height: 15vh;
+    background-image: url("/images/brain.png");
+    
+    background-repeat: repeat;
+    background-size: 200px; /* or use a percentage, e.g. 20% */
 }
 .nav-link,
 .navbar-brand {
-    color: #fff;
-    cursor: pointer;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bold;
+    font-size: 1.5rem;
+    color: #fff !important;
+}
+
+.navbar-logo {
+    height: 100px;       /* or adjust as needed */
+    width: auto;
+    border-radius: 10%; /* optional: makes it round */
+    margin-right: 10px;
 }
 .nav-link {
-    margin-right: 1em !important;
+    color: #fff !important;
+    text-decoration: none;
 }
 .nav-link:hover {
-    color: #000;
+    color: #aad21b;
+    transform: scale(1.1);
 }
+
 .navbar-collapse {
     justify-content: flex-end;
 }
+.gradient-custom {
+
+  }
