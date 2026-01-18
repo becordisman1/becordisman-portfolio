@@ -15,7 +15,7 @@ html, body {
 
 body {
   position: relative;
-  background: orange;
+  background: red !important;
   overflow: hidden;
 }
 body:before {
@@ -243,4 +243,3 @@ nav {
     opacity: 1;
   }
 }
-/* cache-bust 1768765009 */
