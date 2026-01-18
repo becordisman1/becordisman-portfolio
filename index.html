@@ -1,162 +1,56 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <title>becordisman - Portfolio</title>
-    <link rel="stylesheet" href="styles/buttons.css">
-    <link rel="stylesheet" type="text/css" href="css/style.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
-</head>
-
-<body>
-<div class="gradient-custom w-100">
-
-<nav class="navbar navbar-expand-md">
-	<a class="navbar-brand" href="">becordisman</a>
-	<button class="navbar-toggler navbar-dark" type="button" data-toggle="collapse" data-target="#main-navigation">
-		<span class="navbar-toggler-icon"></span>
-	</button>
-	<div class="collapse navbar-collapse" id="main-navigation">
-		<ul class="navbar-nav">
-			<li class="nav-item">
-				<a class="nav-link" href="index.html">Home</a>
-			</li>
-			<li class="nav-item">
-				<a class="nav-link" href="about.html">About</a>
-			</li>
-			<li class="nav-item">
-				<a class="nav-link" href="contact.html">Contact</a>
-			</li>
-            <li class="nav-item">
-				<a class="nav-link" href="gallery.html">Gallery</a>
-			</li>
-		</ul>
-	</div>
-</nav>
-<div class="container vh-100 d-flex justify-content-center align-items-center flex-column text-center">
-
-    <div class="text-center">
-
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Becordisman - Portfolio</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+  </head>
+  <body>
+    <div class="container my-5">
+        <h1>Becordisman</h1>
+        <p class="lead">
+            Mover of images.
+        </p>
     </div>
+    <div class="container">
+        <nav>
+            <ul class="nav nav-pills">
+                <li class="nav-item"><a class="nav-link active" href="#">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="#">About me</a></li>
+                <li class="nav-item"><a class="nav-link" href="#">Contact</a></li>
+            </ul>
+        </nav>
+        
 
+        <div id="mediaArea" class="d-flex align-items-center justify-content-center mt-5" style="">
 
+                <div class="mediaScreen text-center" style="position:relative; width:480px; height:360px;">
+                    <button id="playButton" class="btn btn-primary"
+                      style="position:absolute; left:50%; top:50%; transform:translate(-50%,-50%); font-size:1.25rem; padding:0.75rem 1.5rem; z-index:10;">
+                      Play with Sound
+                    </button>
+
+                    <img id="headbop" src="images/headbop.gif" alt="headbop" class="img-fluid"
+                        style="max-width:100%; max-height:100%; display:block; position:absolute; left:50%; top:38%; transform:translate(-50%,-60%); z-index:1; pointer-events:none;" />
+
+                    <img id="randomImage1" src="" alt="Random" style="display:none; max-width:100%; max-height:100%; position:absolute; left:50%; top:50%; transform:translate(-50%,-50%); z-index:1; pointer-events:none;" />
+                    <video id="randomVideo1" autoplay loop playsinline width="480" height="360" style="display:none; position:absolute; left:50%; top:50%; transform:translate(-50%,-40%); z-index:1;">
+                      <source id="videoSource1" src="" type="video/mp4" />
+                      Your browser does not support the video tag.
+                    </video>
+                </div>
             
 
-      
-<div class="header-with-image text-center position-relative mb-4">
-    <img src="\images\headbop.gif" alt="therat" class="img-fluid" style="max-width: 1080px;">
-    <div class="header-text position-absolute top-50 start-50 translate-middle text-white">
-        <h1>BECORDISMAN</h1>
-        <p>//digital exporter//</p>
- 
+        </div>
 
 
 
 
-    
-<header class="page-header header container-fluid">
-</header>
-      <button id="playButton"
-          style="font-size:2rem; padding:1rem 2rem; margin-bottom:1rem; cursor:pointer;">Play with Sound
-      </button>
-      <div id="mediaContainer">
-          <div class="mediaScreen">
+        <audio id="changeSound" src="audio/change.mp3" preload="auto"></audio>
+    </div>
 
-              <img id="randomImage1" src="" alt="Random" style="display:none; max-width:480px; max-height:360px;" />
-              <video id="randomVideo1" autoplay loop playsinline width="960" height="720" style="display:none">
-                  <source id="videoSource1" src="" type="video/mp4">
-                  Your browser does not support the video tag.
-              </video>
-          </div>
-          </div>
-      <h2 class="text-primary">smoothworld - takeover</h2>
-
-    
-
-      <a href="https://www.youtube.com/@becordisman" target="_blank" class="youtube-button">
-          Visit my YouTube
-      </a>
-      </div>
-      </div>
-
-
-
-      
-
-  
-
-  <audio id="changeSound" src="audio/change.mp3" preload="auto"></audio>
-
-  <!-- Move script tags to the end of body for correct loading order -->
-  <script type="module">
-// Automatically generate video entries for video (1) to video (100)
-const media = [];
-for (let i = 1; i <= 34; i++) {
-    media.push({ type: 'video', src: `video/video (${i}).mp4` });
-}
-// Add images here if needed
-// media.push({ type: 'image', src: 'images/pic1.jpg' });
-// media.push({ type: 'image', src: 'images/pic2.png' });
-
-function showRandomMediaForScreen(videoId, videoSourceId, imgId) {
-    const changeSound = document.getElementById('changeSound');
-    function show() {
-        if (changeSound) {
-            changeSound.currentTime = 0;
-            // changeSound.play(); // <-- This line should stay commented out or removed
-        }
-        const randomIndex = Math.floor(Math.random() * media.length);
-        const item = media[randomIndex];
-        const video = document.getElementById(videoId);
-        const videoSource = document.getElementById(videoSourceId);
-        const img = document.getElementById(imgId);
-        if (item.type === 'video') {
-            videoSource.src = item.src;
-            video.style.display = '';
-            img.style.display = 'none';
-            video.load();
-            video.onloadedmetadata = function() {
-                if (video.duration && !isNaN(video.duration)) {
-                    video.currentTime = Math.random() * video.duration;
-                }
-                video.muted = false;
-                video.play();
-            };
-        } else {
-
-            img.src = item.src;
-            img.style.display = '';
-            video.style.display = 'none';
-        }
-        const nextTime = Math.floor(Math.random() * 33 + 6) * 1000;
-        setTimeout(show, nextTime);
-    }
-    show();
-}
-
-document.getElementById('playButton').addEventListener('click', function() {
-    // Prime the audio for mobile browsers (optional, not auto-play)
-    const changeSound = document.getElementById('changeSound');
-    if (changeSound) {
-        changeSound.play().then(() => {
-            changeSound.pause();
-            changeSound.currentTime = 0;
-        }).catch(() => {
-            // Ignore errors (user gesture will allow future play)
-        });
-    }
-    // Hide play button
-    this.style.display = 'none';
-    // Hide flexbox-item-6
-    const flexbox6 = document.querySelector('.flexbox-item-6', );
-    if (flexbox6) flexbox6.style.display = 'none';
-    showRandomMediaForScreen('randomVideo1', 'videoSource1', 'randomImage1');
-});
-
-</script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" crossorigin="anonymous"></script>
-<script src="main.js"></script>
-</body>
+    <script type="module" src="js/custom.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+  </body>
 </html>
-
