@@ -98,3 +98,5 @@
     });
   });
 })();
+console.clear();
+Splitting();
