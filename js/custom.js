@@ -97,6 +97,37 @@
       showRandomMediaForScreen('randomVideo1', 'videoSource1', 'randomImage1');
     });
   });
+
+  // Contact form handling
+  document.addEventListener('DOMContentLoaded', function () {
+    const contactForm = document.getElementById('contactForm');
+    if (!contactForm) return;
+
+    contactForm.addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      const formStatus = document.getElementById('formStatus');
+      const name = document.getElementById('name').value;
+      const email = document.getElementById('email').value;
+      const subject = document.getElementById('subject').value;
+      const message = document.getElementById('message').value;
+
+      // Create mailto link
+      const mailtoLink = `mailto:becord9000@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`)}`;
+      
+      // Open email client
+      window.location.href = mailtoLink;
+
+      // Show success message
+      formStatus.innerHTML = '<div class="alert alert-success">Opening your email client...</div>';
+      
+      // Reset form after a delay
+      setTimeout(() => {
+        contactForm.reset();
+        formStatus.innerHTML = '';
+      }, 3000);
+    });
+  });
 })();
 console.clear();
 Splitting();
