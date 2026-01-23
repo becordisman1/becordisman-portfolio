@@ -1,10 +1,44 @@
 (function () {
   'use strict';
 
-  // Automatically generate video entries for video (1) to video (34)
+  // YouTube video IDs array - add your YouTube video IDs here
   const media = [];
-  for (let i = 1; i <= 34; i++) {
-    media.push({ type: 'video', src: `video/video (${i}).mp4` });
+  const youtubeVideoIds = [
+    'kR2UIZho_VE', // Example - replace with your actual video IDs
+    'IjZS93RC2vs',
+    'Z__IBnFvXsc',
+    'bXjj4z6xRCk',
+    '3Xoo461mfTo',
+    '9OTKNmpcF_Y',
+    'Vk0xDw7TeX4',
+    'xha2h2yx4xw',
+    'xha2h2yx4xw',
+    'XkkVpP37HP0',
+    'pKlT4JFfBIA',
+    'AhRsS-Zf6Xk',
+    'l_ruOF1Fkwc',
+    'v=vAbfrGeBzPo',
+    'LraeyCS8wFc',
+    'w7hH2jLhG7c',
+    'LB0rjI85gxo',
+    'hKQEzqEtIJE',
+    'Ed7LYXqXxzU',
+    '-rqrJ_LhhJw',
+    'L8pPbKv_hnw',
+    'Do4fg3QKgyM',
+    'n651mPxIWM4',
+    'onNPiPvv6zQ',
+    'n6pQQziLY0o',
+    'b07k0KV-iA8',
+    'GpmHLBthiv4',
+    'eb8dZT7sKr0',
+    'z_-wJutuGBY',
+    'wuZh3pfPTYE',
+    'e0aHM-tR25c'
+  ];
+  
+  for (let i = 0; i < youtubeVideoIds.length; i++) {
+    media.push({ type: 'youtube', videoId: youtubeVideoIds[i] });
   }
 
   function showRandomMediaForScreen(videoId, videoSourceId, imgId) {
@@ -23,9 +57,9 @@
       const videoSource = document.getElementById(videoSourceId);
       const img = document.getElementById(imgId);
 
-      if (!video || !videoSource || !img) return;
+      if (!video || !img) return;
 
-      if (item.type === 'video') {
+      if (item.type === 'youtube') {
         // hide/remove headbop GIF when a video animation starts
         if (headbop) {
           headbop.style.display = 'none';
@@ -34,20 +68,61 @@
             delete headbop._gifLoopTimer;
           }
         }
-        videoSource.src = item.src;
-        video.style.display = '';
+        
+        // Create or update YouTube iframe
+        let iframe = document.getElementById(videoId + '_iframe');
+        if (!iframe) {
+          iframe = document.createElement('iframe');
+          iframe.id = videoId + '_iframe';
+          iframe.width = '100%';
+          iframe.height = '100%';
+          iframe.frameBorder = '0';
+          iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
+          iframe.allowFullscreen = true;
+          video.parentNode.insertBefore(iframe, video);
+        }
+        
+        // Set YouTube embed URL with autoplay and random start time
+        const startTime = Math.floor(Math.random() * 120); // Random start between 0-120 seconds
+        iframe.src = `https://www.youtube.com/embed/${item.videoId}?autoplay=1&start=${startTime}&mute=0`;
+        iframe.style.display = '';
+        video.style.display = 'none';
         img.style.display = 'none';
-        video.load();
-        video.onloadedmetadata = function () {
-          if (video.duration && !isNaN(video.duration)) {
-            video.currentTime = Math.random() * video.duration;
+      } else if (item.type === 'video') {
+        // hide/remove headbop GIF when a video animation starts
+        if (headbop) {
+          headbop.style.display = 'none';
+          if (headbop._gifLoopTimer) {
+            clearInterval(headbop._gifLoopTimer);
+            delete headbop._gifLoopTimer;
           }
-          video.muted = false;
-          video.play().catch(() => {});
-        };
+        }
+        
+        // Hide YouTube iframe if exists
+        const iframe = document.getElementById(videoId + '_iframe');
+        if (iframe) iframe.style.display = 'none';
+        
+        if (videoSource) {
+          videoSource.src = item.src;
+          video.style.display = '';
+          img.style.display = 'none';
+          video.load();
+          video.onloadedmetadata = function () {
+            if (video.duration && !isNaN(video.duration)) {
+              video.currentTime = Math.random() * video.duration;
+            }
+            video.muted = false;
+            video.play().catch(() => {});
+          };
+        }
       } else {
         // if you also want the headbop hidden for images, uncomment next lines
         // if (headbop) headbop.style.display = 'none';
+        
+        // Hide YouTube iframe if exists
+        const iframe = document.getElementById(videoId + '_iframe');
+        if (iframe) iframe.style.display = 'none';
+        
         img.src = item.src;
         img.style.display = '';
         video.style.display = 'none';
