@@ -1,6 +1,44 @@
 body {
   background-color: #000000;
   color: #ffffff;
+  text-shadow: 0 0 6px rgba(255, 255, 255, 0.55), 0 0 16px rgba(255, 255, 255, 0.25);
+
+}
+
+h1 {
+  font-size: 4.5rem;
+}
+
+body > * {
+  position: relative;
+  z-index: 1;
+}
+
+.gif-tile-grid {
+  position: fixed;
+  inset: 0;
+  display: grid;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.gif-tile {
+  background-image: url("https://media.giphy.com/media/5kcTeDZmTTAJnou50r/giphy.gif");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  animation: hueSpin var(--hue-duration, 12s) linear infinite;
+  animation-delay: var(--hue-delay, 0s);
+  filter: hue-rotate(var(--hue-offset, 0deg)) saturate(1.4);
+}
+
+@keyframes hueSpin {
+  0% {
+    filter: hue-rotate(var(--hue-offset, 0deg)) saturate(1.4);
+  }
+  100% {
+    filter: hue-rotate(calc(var(--hue-offset, 0deg) + 360deg)) saturate(1.4);
+  }
 }
 
 .play-button {
