@@ -2,15 +2,17 @@ body {
   background-color: #000000;
   color: #ffffff;
   text-shadow: 0 0 6px rgba(255, 255, 255, 0.55), 0 0 16px rgba(255, 255, 255, 0.25);
+  font-size: clamp(0.95rem, 1.1vw + 0.65rem, 1.25rem);
 
 }
 
 h1 {
-  font-size: 4.5rem;
+  font-size: clamp(2rem, 5vw + 1rem, 4.5rem);
 }
 
 h2 {
   color: #b0e0e6;
+  font-size: clamp(1.4rem, 3vw + 0.6rem, 3rem);
 }
 
 body > * {
