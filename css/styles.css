@@ -9,6 +9,10 @@ h1 {
   font-size: 4.5rem;
 }
 
+h2 {
+  color: #b0e0e6;
+}
+
 body > * {
   position: relative;
   z-index: 1;
