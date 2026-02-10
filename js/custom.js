@@ -2,7 +2,12 @@
   'use strict';
 
   const GIF_TILE_URL = 'https://media.giphy.com/media/5kcTeDZmTTAJnou50r/giphy.gif';
-  const TILE_SIZE = 180;
+  const TILE_SIZE_DESKTOP = 180;
+  const TILE_SIZE_MOBILE = 110;
+
+  function getTileSize() {
+    return window.innerWidth <= 576 ? TILE_SIZE_MOBILE : TILE_SIZE_DESKTOP;
+  }
 
   function buildGifTileGrid() {
     const existingGrid = document.querySelector('.gif-tile-grid');
@@ -13,10 +18,11 @@
     const grid = document.createElement('div');
     grid.className = 'gif-tile-grid';
 
-    const columns = Math.ceil(window.innerWidth / TILE_SIZE);
-    const rows = Math.ceil(window.innerHeight / TILE_SIZE);
-    grid.style.gridTemplateColumns = `repeat(${columns}, ${TILE_SIZE}px)`;
-    grid.style.gridAutoRows = `${TILE_SIZE}px`;
+    const tileSize = getTileSize();
+    const columns = Math.ceil(window.innerWidth / tileSize);
+    const rows = Math.ceil(window.innerHeight / tileSize);
+    grid.style.gridTemplateColumns = `repeat(${columns}, ${tileSize}px)`;
+    grid.style.gridAutoRows = `${tileSize}px`;
 
     const totalTiles = columns * rows;
     for (let i = 0; i < totalTiles; i += 1) {
