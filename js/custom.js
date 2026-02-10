@@ -217,8 +217,12 @@
         changeSound.play().catch(() => {});
       }
 
-      // hide the button (media will occupy the same box)
+      // hide the button and overlay gif
       this.style.display = 'none';
+      const buttonOverlay = document.getElementById('buttonOverlay');
+      if (buttonOverlay) {
+        buttonOverlay.style.display = 'none';
+      }
 
       // show headbop behind the button and restart animation
       const headbopClick = document.getElementById('headbop');
