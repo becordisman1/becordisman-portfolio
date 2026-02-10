@@ -15,26 +15,35 @@
           padding: 0.8rem 1.6rem;
         }
       }
+      .mediaScreen iframe {
+        position: absolute !important;
+        left: 50% !important;
+        top: 50% !important;
+        transform: translate(-50%, -50%) !important;
+        z-index: 10001 !important;
+        width: 480px !important;
+        height: 360px !important;
+      }
     </style>
   </head>
-  <body>
-    <div class="container-fluid">
-      <div class="container mt-4">  
+  <body style="background: url('https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExbzhhdHQ5MnUwNm9ubnp2bXdwMXhmM2h5aTV4bnlranI5OHh1NHplMyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/dftWr936Vt6eTqiGZc/giphy.gif') center/cover fixed;">
+    <div class="container-fluid" style="position:relative;z-index:100;">
+      <div class="container mt-4" style="position:relative;z-index:100;">  
         <h1 id="home">Becordisman </h1>
         <h3>smooth world oracle</h3>
         
-        <div id="mediaArea" class="row justify-content-center align-items-center mt-5">
-            <div class="col-md-6 mx-auto d-flex flex-column justify-content-center align-items-center">
-                <div class="mediaScreen text-center" style="position:relative; width:480px; height:360px;">
+        <div id="mediaArea" class="row justify-content-center align-items-center mt-5" style="position:relative; z-index:10000;">
+            <div class="col-md-6 mx-auto d-flex flex-column justify-content-center align-items-center" style="position:relative; z-index:10000;">
+                <div class="mediaScreen text-center" style="position:relative; width:480px; height:360px; z-index:10000;">
                     <button id="playButton" class="play-button">
-                      Push da button
+                      clickable
                     </button>
 
 
 
 
-                    <img id="randomImage1" src="" alt="Random" style="display:none; max-width:100%; max-height:100%; position:absolute; left:50%; top:50%; transform:translate(-50%,-50%); z-index:1; pointer-events:none;" />
-                    <video id="randomVideo1" autoplay loop playsinline width="480" height="360" style="display:none; position:absolute; left:50%; top:50%; transform:translate(-50%,-40%); z-index:1;">
+                    <img id="randomImage1" src="" alt="Random" style="display:none; max-width:100%; max-height:100%; position:absolute; left:50%; top:50%; transform:translate(-50%,-50%); z-index:10001; pointer-events:none;" />
+                    <video id="randomVideo1" autoplay loop playsinline width="480" height="360" style="display:none; position:absolute; left:50%; top:50%; transform:translate(-50%,-40%); z-index:10001;">
                       <source id="videoSource1" src="" type="video/mp4" />
                       Your browser does not support the video tag.
                     </video>

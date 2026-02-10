@@ -46,6 +46,17 @@
       window.clearTimeout(resizeTimer);
       resizeTimer = window.setTimeout(buildGifTileGrid, 150);
     });
+
+    // Make gif-tile-grid clickable
+    document.addEventListener('click', function(e) {
+      const grid = document.querySelector('.gif-tile-grid');
+      if (grid && (e.target === grid || grid.contains(e.target))) {
+        const playButton = document.getElementById('playButton');
+        if (playButton && playButton.style.display !== 'none') {
+          playButton.click();
+        }
+      }
+    });
   });
 
   // YouTube video IDs array - add your YouTube video IDs here
@@ -193,9 +204,9 @@
     const headbop = document.getElementById('headbop');
     if (headbop) {
       headbop.style.display = '';
-      headbop.style.zIndex = '1';
+      headbop.style.zIndex = '2';
       headbop.style.pointerEvents = 'none';
-      headbop.src = 'images/headbop.gif?' + Date.now(); // force reload to start animation now
+      headbop.src = 'https://media.giphy.com/media/5kcTeDZmTTAJnou50r/giphy.gif?' + Date.now(); // force reload to start animation now
     }
 
     playButton.addEventListener('click', function () {
@@ -213,7 +224,7 @@
       const headbopClick = document.getElementById('headbop');
       if (headbopClick) {
         // restart GIF on click in case you want a fresh loop
-        headbopClick.src = 'images/headbop.gif?' + Date.now();
+        headbopClick.src = 'https://media.giphy.com/media/5kcTeDZmTTAJnou50r/giphy.gif?' + Date.now();
       }
 
       showRandomMediaForScreen('randomVideo1', 'videoSource1', 'randomImage1');
