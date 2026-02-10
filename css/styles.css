@@ -20,33 +20,13 @@ body > * {
   z-index: 1;
 }
 
-.gif-tile-grid {
-  position: fixed;
-  inset: 0;
-  display: grid;
-  pointer-events: auto;
-  z-index: 0;
-  opacity: 1;
-  cursor: pointer;
-}
+
 
 .gif-tile-grid video,
 .gif-tile-grid img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-}
-
-.gif-tile {
-  background-image: url("https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExbzhhdHQ5MnUwNm9ubnp2bXdwMXhmM2h5aTV4bnlranI5OHh1NHplMyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/dftWr936Vt6eTqiGZc/giphy.gif");
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: contain;
-  animation: hueSpin var(--hue-duration, 12s) linear infinite;
-  animation-delay: var(--hue-delay, 0s);
-  filter: hue-rotate(var(--hue-offset, 0deg)) saturate(1.4);
-  mix-blend-mode: screen;
-  opacity: 0.7;
 }
 
 @keyframes hueSpin {
@@ -60,10 +40,11 @@ body > * {
 
 .play-button {
   background: linear-gradient(135deg, #e8e8e8 0%, #a8a8a8 50%, #c0c0c0 100%);
+  background-image: url("https://media.giphy.com/media/5kcTeDZmTTAJnou50r/giphy.gif");
   background-image: url("https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExbzhhdHQ5MnUwNm9ubnp2bXdwMXhmM2h5aTV4bnlranI5OHh1NHplMyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/dftWr936Vt6eTqiGZc/giphy.gif");
-  border: 8px solid #00d9ff;
+  border: 8px solid #1b2746;
   border-radius: 50%;
-  color: #bbeaff;
+  color: #e77e98;
   font-size: 3rem;
   font-weight: 700;
   left: 50%;
