@@ -1,18 +1,40 @@
 body {
-  background-color: #6dd626;
+  background-color: #000000;
   color: #ffffff;
-  text-shadow: 0 0 6px rgba(255, 255, 255, 0.55), 0 0 16px rgba(255, 255, 255, 0.25);
+  text-shadow: none;
+  font-family: "Rubik", "Trebuchet MS", sans-serif;
   font-size: clamp(0.95rem, 1.1vw + 0.65rem, 1.25rem);
 
 }
 
+:root {
+  --ink: #0d0f1c;
+  --card-bg: #f7f2e9;
+  --card-shadow: rgba(13, 15, 28, 0.35);
+  --card-accent: #ff7f3f;
+  --card-accent-2: #1b2746;
+  --groove-pink: #ff6fd8;
+  --groove-yellow: #ffe45e;
+  --groove-teal: #4ce4c9;
+}
+
 h1 {
+  font-family: "Rubik", "Trebuchet MS", sans-serif;
   font-size: clamp(2rem, 5vw + 1rem, 4.5rem);
 }
 
 h2 {
-  color: #b0e0e6;
+  color: #ffffff;
   font-size: clamp(1.4rem, 3vw + 0.6rem, 3rem);
+}
+
+h3 {
+  font-family: "Rubik", "Trebuchet MS", sans-serif;
+  font-size: clamp(1.3rem, 2.4vw + 0.6rem, 2.2rem);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 1.5rem;
+  color: #ffffff;
 }
 
 body > * {
@@ -72,4 +94,101 @@ body > * {
 
 .play-button:active {
   transform: translate(-50%, -50%) scale(0.98);
+}
+
+.about-card {
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+  color: #ffffff;
+  margin: 0;
+  max-width: none;
+  padding: 0;
+  position: relative;
+  overflow: visible;
+  animation: none;
+}
+
+.about-card::before {
+  content: none;
+}
+
+.about-card::after {
+  content: none;
+}
+
+.about-card > * {
+  position: relative;
+  z-index: 1;
+}
+
+.about-card__eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 0.3em;
+  font-weight: 600;
+  font-size: 0.85rem;
+  color: #ffffff;
+  margin-bottom: 0.6rem;
+}
+
+.about-card__title {
+  font-family: "Rubik", "Trebuchet MS", sans-serif;
+  font-size: clamp(2.2rem, 4vw + 1rem, 4rem);
+  margin: 0 0 0.3rem;
+  color: #ffffff;
+  text-shadow: none;
+}
+
+.about-card__subtitle {
+  font-family: "Rubik", "Trebuchet MS", sans-serif;
+  font-size: clamp(1rem, 1.4vw + 0.6rem, 1.4rem);
+  margin-bottom: 1.6rem;
+  color: #ffffff;
+}
+
+.about-card__body p {
+  font-size: clamp(1rem, 1.4vw + 0.7rem, 1.35rem);
+  margin-bottom: 1rem;
+  color: #ffffff;
+}
+
+.about-card__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1.5rem;
+}
+
+.about-pill {
+  border: 1px solid #ffffff;
+  border-radius: 999px;
+  padding: 0.45rem 1rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  background: transparent;
+  color: #ffffff;
+}
+
+@keyframes cardLift {
+  0% {
+    opacity: 0;
+    transform: translateY(24px) scale(0.98);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes grooveFloat {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
 }
