@@ -38,7 +38,7 @@ body > * {
 }
 
 .gif-tile {
-  background-image: url("https://media.giphy.com/media/5kcTeDZmTTAJnou50r/giphy.gif");
+  background-image: url("https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExbzhhdHQ5MnUwNm9ubnp2bXdwMXhmM2h5aTV4bnlranI5OHh1NHplMyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/dftWr936Vt6eTqiGZc/giphy.gif");
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
@@ -60,7 +60,7 @@ body > * {
 
 .play-button {
   background: linear-gradient(135deg, #e8e8e8 0%, #a8a8a8 50%, #c0c0c0 100%);
-  background-image: url("https://media.giphy.com/media/5kcTeDZmTTAJnou50r/giphy.gif");
+  background-image: url("https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExbzhhdHQ5MnUwNm9ubnp2bXdwMXhmM2h5aTV4bnlranI5OHh1NHplMyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/dftWr936Vt6eTqiGZc/giphy.gif");
   border: 8px solid #00d9ff;
   border-radius: 50%;
   color: #bbeaff;
@@ -84,7 +84,7 @@ body > * {
 
 .play-button:hover {
   background: linear-gradient(135deg, #e8e8e8 0%, #a8a8a8 50%, #c0c0c0 100%);
-  background-image: url("https://media.giphy.com/media/5kcTeDZmTTAJnou50r/giphy.gif");
+  background-image: url("https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExbzhhdHQ5MnUwNm9ubnp2bXdwMXhmM2h5aTV4bnlranI5OHh1NHplMyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/dftWr936Vt6eTqiGZc/giphy.gif");
   box-shadow: 0 12px 28px rgba(255, 255, 255, 0.45);
   transform: translate(-50%, -50%) scale(1.05);
 }
