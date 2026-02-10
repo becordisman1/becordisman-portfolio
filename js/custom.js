@@ -42,14 +42,16 @@
     media.push({ type: 'youtube', videoId: youtubeVideoIds[i] });
   }
 
+  let soundEnabled = false;
+
   function showRandomMediaForScreen(videoId, videoSourceId, imgId) {
     const changeSound = document.getElementById('changeSound');
     const headbop = document.getElementById('headbop');
 
     function show() {
-      if (changeSound) {
+      if (changeSound && soundEnabled) {
         changeSound.currentTime = 0;
-        // changeSound.play(); // keep commented out if you don't want automatic sound
+        changeSound.play().catch(() => {});
       }
 
       const randomIndex = Math.floor(Math.random() * media.length);
@@ -151,13 +153,10 @@
 
     playButton.addEventListener('click', function () {
       const changeSound = document.getElementById('changeSound');
+      soundEnabled = true;
       if (changeSound) {
-        changeSound.play().then(() => {
-          changeSound.pause();
-          changeSound.currentTime = 0;
-        }).catch(() => {
-          // ignore
-        });
+        changeSound.currentTime = 0;
+        changeSound.play().catch(() => {});
       }
 
       // hide the button (media will occupy the same box)

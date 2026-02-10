@@ -2,3 +2,31 @@ body {
   background-color: #2a2a2a;
   color: #ffffff;
 }
+
+.play-button {
+  background-color: #e53935;
+  border: 3px solid #ffb3b1;
+  border-radius: 999px;
+  color: #ffffff;
+  font-size: 1.5rem;
+  font-weight: 700;
+  left: 50%;
+  letter-spacing: 0.02em;
+  padding: 1rem 2.5rem;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  text-transform: uppercase;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, background-color 0.15s ease;
+  z-index: 10;
+}
+
+.play-button:hover {
+  background-color: #ff2d2d;
+  box-shadow: 0 12px 28px rgba(229, 57, 53, 0.45);
+  transform: translate(-50%, -50%) scale(1.05);
+}
+
+.play-button:active {
+  transform: translate(-50%, -50%) scale(0.98);
+}
