@@ -1,7 +1,7 @@
 (function () {
   'use strict';
 
-  const GIF_TILE_URL = 'https://media.giphy.com/media/5kcTeDZmTTAJnou50r/giphy.gif';
+  const TILE_OVERLAY_URL = 'img/pastel-yellow-vignette-concrete-textured-background.jpg';
   const HEADBOP_GIF_URL = 'https://media.giphy.com/media/5kcTeDZmTTAJnou50r/giphy.gif';
   const TILE_SIZE_DESKTOP = 180;
   const TILE_SIZE_MOBILE = 110;
@@ -50,10 +50,22 @@
     for (let i = 0; i < totalTiles; i += 1) {
       const tile = document.createElement('div');
       tile.className = 'gif-tile';
-      tile.style.backgroundImage = `url("${GIF_TILE_URL}")`;
       tile.style.setProperty('--hue-offset', `${Math.floor(Math.random() * 360)}deg`);
       tile.style.setProperty('--hue-duration', `${(6 + Math.random() * 14).toFixed(2)}s`);
       tile.style.setProperty('--hue-delay', `${(-Math.random() * 10).toFixed(2)}s`);
+
+      const head = document.createElement('img');
+      head.className = 'gif-tile__headbop';
+      head.alt = '';
+      head.src = `${HEADBOP_GIF_URL}?v=${Date.now()}-${i}`;
+      tile.appendChild(head);
+
+      const overlay = document.createElement('img');
+      overlay.className = 'gif-tile__overlay';
+      overlay.alt = '';
+      overlay.src = TILE_OVERLAY_URL;
+      tile.appendChild(overlay);
+
       grid.appendChild(tile);
     }
 

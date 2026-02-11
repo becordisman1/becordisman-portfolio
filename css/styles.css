@@ -49,13 +49,50 @@ body > * {
   gap: 0;
   z-index: 0;
   pointer-events: none;
+  isolation: isolate;
+  filter: hue-rotate(70deg) brightness(1.2) saturate(100%);
+}
+
+.gif-tile-grid::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: #000000;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 0;
 }
 
 .gif-tile {
-  background-position: center;
-  background-size: cover;
-  animation: hueSpin var(--hue-duration, 10s) linear infinite;
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+  background: transparent;
+  animation: hueSpin var(--hue-duration, 20s) linear infinite;
   animation-delay: var(--hue-delay, 0s);
+}
+
+.gif-tile__headbop {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 100%;
+  height: 120%;
+  transform: translate(-50%, -50%);
+  object-fit: cover;
+  opacity: 1;
+  animation: headBob 1.8s ease-in-out infinite, hueSpin var(--hue-duration, 20s) linear infinite;
+  animation-delay: calc(var(--hue-delay, 0s) * -1), var(--hue-delay, 0s);
+}
+
+.gif-tile__overlay {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  pointer-events: none;
 }
 
 
@@ -68,11 +105,12 @@ body > * {
 }
 
 @keyframes hueSpin {
+  background-color: #000000;
   0% {
-    filter: hue-rotate(var(--hue-offset, 0deg)) saturate(1.4);
+    filter: hue-rotate(var(--hue-offset, 0deg)) saturate(1.9);
   }
   100% {
-    filter: hue-rotate(calc(var(--hue-offset, 0deg) + 360deg)) saturate(1.4);
+    filter: hue-rotate(calc(var(--hue-offset, 0deg) + 760deg)) saturate(1.9);
   }
 }
 
@@ -108,7 +146,7 @@ body > * {
   transform: translate(-50%, -50%);
   mix-blend-mode: normal;
   animation: headBob 1.6s ease-in-out infinite, hueSpin var(--hue-duration, 10s) linear infinite;
-  opacity: 0.95;
+  opacity: 0.08;
 }
 
 .headbop__layer--one {
@@ -122,7 +160,7 @@ body > * {
   --hue-duration: 12s;
   transform: translate(-48%, -52%) scale(1.02);
   animation-delay: -0.3s, -4s;
-  opacity: 0.85;
+  opacity: 0.07;
 }
 
 .headbop__layer--three {
@@ -130,18 +168,16 @@ body > * {
   --hue-duration: 14s;
   transform: translate(-52%, -46%) scale(0.98);
   animation-delay: -0.6s, -6s;
-  opacity: 0.8;
+  opacity: 0.05;
 }
 
 .play-button {
-  background: linear-gradient(135deg, #e8e8e8 0%, #a8a8a8 50%, #c0c0c0 100%);
-  background-image: url("https://media.giphy.com/media/5kcTeDZmTTAJnou50r/giphy.gif");
-  background-image: url("https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExbzhhdHQ5MnUwNm9ubnp2bXdwMXhmM2h5aTV4bnlranI5OHh1NHplMyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/dftWr936Vt6eTqiGZc/giphy.gif");
+  background: #ffffff;
   border: 8px solid #1b2746;
   border-radius: 50%;
-  color: #e77e98;
-  font-size: 3rem;
-  font-weight: 700;
+  color: #000000;
+  font-size: 2rem;
+  font-weight: 500;
   left: 50%;
   letter-spacing: 0.02em;
   padding: 4rem;
@@ -151,8 +187,8 @@ body > * {
   text-transform: uppercase;
   transition: transform 0.15s ease, box-shadow 0.15s ease, background-color 0.15s ease;
   z-index: 10002;
-  width: 400px;
-  height: 400px;
+  width: 100px;
+  height: 100px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -160,7 +196,6 @@ body > * {
 
 .play-button:hover {
   background: linear-gradient(135deg, #e8e8e8 0%, #a8a8a8 50%, #c0c0c0 100%);
-  background-image: url("https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExbzhhdHQ5MnUwNm9ubnp2bXdwMXhmM2h5aTV4bnlranI5OHh1NHplMyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/dftWr936Vt6eTqiGZc/giphy.gif");
   box-shadow: 0 12px 28px rgba(255, 255, 255, 0.45);
   transform: translate(-50%, -50%) scale(1.05);
 }
