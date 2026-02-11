@@ -38,7 +38,12 @@
         <div id="mediaArea" class="row justify-content-center align-items-center mt-5" style="position:relative; z-index:10000;">
             <div class="col-md-6 mx-auto d-flex flex-column justify-content-center align-items-center" style="position:relative; z-index:10000;">
                 <div class="mediaScreen text-center" style="position:relative; width:480px; height:360px; z-index:10000;">
-                    <img id="buttonOverlay" src="https://media.giphy.com/media/5kcTeDZmTTAJnou50r/giphy.gif" alt="" style="position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:100%;height:100%;object-fit:contain;z-index:10005;pointer-events:none;opacity:1;">
+                    <div id="headbop" class="headbop" aria-hidden="true">
+                      <img class="headbop__layer headbop__layer--one" src="https://media.giphy.com/media/5kcTeDZmTTAJnou50r/giphy.gif" alt="">
+                      <img class="headbop__layer headbop__layer--two" src="https://media.giphy.com/media/5kcTeDZmTTAJnou50r/giphy.gif" alt="">
+                      <img class="headbop__layer headbop__layer--three" src="https://media.giphy.com/media/5kcTeDZmTTAJnou50r/giphy.gif" alt="">
+                    </div>
+                    <img id="buttonOverlay" src="https://media.giphy.com/media/5kcTeDZmTTAJnou50r/giphy.gif" alt="" style="position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:100%;height:100%;object-fit:contain;z-index:10005;pointer-events:none;opacity:0;">
                     
                     <button id="playButton" class="play-button">
                       clickable

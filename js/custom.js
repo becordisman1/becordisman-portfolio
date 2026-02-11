@@ -2,8 +2,30 @@
   'use strict';
 
   const GIF_TILE_URL = 'https://media.giphy.com/media/5kcTeDZmTTAJnou50r/giphy.gif';
+  const HEADBOP_GIF_URL = 'https://media.giphy.com/media/5kcTeDZmTTAJnou50r/giphy.gif';
   const TILE_SIZE_DESKTOP = 180;
   const TILE_SIZE_MOBILE = 110;
+
+  function getHeadbopLayers() {
+    const headbop = document.getElementById('headbop');
+    if (!headbop) return [];
+
+    if (headbop.tagName === 'IMG') {
+      return [headbop];
+    }
+
+    return Array.from(headbop.querySelectorAll('.headbop__layer'));
+  }
+
+  function restartHeadbopGif() {
+    const layers = getHeadbopLayers();
+    if (!layers.length) return;
+
+    const cacheBuster = Date.now();
+    layers.forEach((layer, index) => {
+      layer.src = `${HEADBOP_GIF_URL}?v=${cacheBuster}-${index}`;
+    });
+  }
 
   function getTileSize() {
     return window.innerWidth <= 576 ? TILE_SIZE_MOBILE : TILE_SIZE_DESKTOP;
@@ -124,10 +146,6 @@
         // hide/remove headbop GIF when a video animation starts
         if (headbop) {
           headbop.style.display = 'none';
-          if (headbop._gifLoopTimer) {
-            clearInterval(headbop._gifLoopTimer);
-            delete headbop._gifLoopTimer;
-          }
         }
         
         // Create or update YouTube iframe
@@ -153,10 +171,6 @@
         // hide/remove headbop GIF when a video animation starts
         if (headbop) {
           headbop.style.display = 'none';
-          if (headbop._gifLoopTimer) {
-            clearInterval(headbop._gifLoopTimer);
-            delete headbop._gifLoopTimer;
-          }
         }
         
         // Hide YouTube iframe if exists
@@ -204,9 +218,9 @@
     const headbop = document.getElementById('headbop');
     if (headbop) {
       headbop.style.display = '';
-      headbop.style.zIndex = '2';
+      headbop.style.zIndex = '10000';
       headbop.style.pointerEvents = 'none';
-      headbop.src = 'https://media.giphy.com/media/5kcTeDZmTTAJnou50r/giphy.gif?' + Date.now(); // force reload to start animation now
+      restartHeadbopGif();
     }
 
     playButton.addEventListener('click', function () {
@@ -228,7 +242,7 @@
       const headbopClick = document.getElementById('headbop');
       if (headbopClick) {
         // restart GIF on click in case you want a fresh loop
-        headbopClick.src = 'https://media.giphy.com/media/5kcTeDZmTTAJnou50r/giphy.gif?' + Date.now();
+        restartHeadbopGif();
       }
 
       showRandomMediaForScreen('randomVideo1', 'videoSource1', 'randomImage1');
