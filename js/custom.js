@@ -75,6 +75,30 @@
   document.addEventListener('DOMContentLoaded', function () {
     buildGifTileGrid();
 
+    // Add hue change on playButton hover/click
+    function setRandomHeadbopHues() {
+      const heads = document.querySelectorAll('.gif-tile__headbop');
+      heads.forEach(head => {
+        const hue = Math.floor(Math.random() * 360);
+        head.style.filter = `hue-rotate(${hue}deg)`;
+      });
+    }
+
+    function resetHeadbopHues() {
+      const heads = document.querySelectorAll('.gif-tile__headbop');
+      heads.forEach(head => {
+        head.style.filter = '';
+      });
+    }
+
+    const playButton = document.getElementById('playButton');
+    if (playButton) {
+      playButton.addEventListener('click', setRandomHeadbopHues);
+      // Only change hue on hover, start with no filter
+      playButton.addEventListener('mouseenter', setRandomHeadbopHues);
+      playButton.addEventListener('mouseleave', resetHeadbopHues);
+    }
+
     let resizeTimer;
     window.addEventListener('resize', function () {
       window.clearTimeout(resizeTimer);
