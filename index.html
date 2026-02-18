@@ -38,13 +38,14 @@
         <div id="mediaArea" class="row justify-content-center align-items-center mt-5" style="position:relative; z-index:10000;">
             <div class="col-md-6 mx-auto d-flex flex-column justify-content-center align-items-center" style="position:relative; z-index:10000;">
                 <div class="mediaScreen text-center" style="position:relative; width:480px; height:360px; z-index:10000;">
-                    <div id="headbop" class="headbop" aria-hidden="true">
-
-                    </div>
+                    
                     <img id="buttonOverlay" src="https://media.giphy.com/media/5kcTeDZmTTAJnou50r/giphy.gif" alt="" style="position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:100%;height:100%;object-fit:contain;z-index:10005;pointer-events:none;opacity:0;">
                     
                     <button id="playButton" class="play-button" aria-label="Play">
-                      <img src="img/eye.png" alt="Play" style="width: 200px; height: 200px; object-fit: contain; display: block; margin: 0 auto; pointer-events: none;" />
+                      <svg width="120" height="120" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg" style="display: block; margin: 0 auto; pointer-events: none;">
+                        <circle cx="60" cy="60" r="58" stroke="#fff" stroke-width="4" fill="rgba(0,0,0,0.4)"/>
+                        <polygon points="50,40 90,60 50,80" fill="#fff"/>
+                      </svg>
                     </button>
 
 

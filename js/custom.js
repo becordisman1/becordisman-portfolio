@@ -1,3 +1,4 @@
+
 (function () {
   'use strict';
 
@@ -6,116 +7,7 @@
   const TILE_SIZE_DESKTOP = 180;
   const TILE_SIZE_MOBILE = 110;
 
-  function getHeadbopLayers() {
-    const headbop = document.getElementById('headbop');
-    if (!headbop) return [];
-
-    if (headbop.tagName === 'IMG') {
-      return [headbop];
-    }
-
-    return Array.from(headbop.querySelectorAll('.headbop__layer'));
-  }
-
-  function restartHeadbopGif() {
-    const layers = getHeadbopLayers();
-    if (!layers.length) return;
-
-    const cacheBuster = Date.now();
-    layers.forEach((layer, index) => {
-      layer.src = `${HEADBOP_GIF_URL}?v=${cacheBuster}-${index}`;
-    });
-  }
-
-  function getTileSize() {
-    return window.innerWidth <= 576 ? TILE_SIZE_MOBILE : TILE_SIZE_DESKTOP;
-  }
-
-  function buildGifTileGrid() {
-    const existingGrid = document.querySelector('.gif-tile-grid');
-    if (existingGrid) {
-      existingGrid.remove();
-    }
-
-    const grid = document.createElement('div');
-    grid.className = 'gif-tile-grid';
-
-    const tileSize = getTileSize();
-    const columns = Math.ceil(window.innerWidth / tileSize);
-    const rows = Math.ceil(window.innerHeight / tileSize);
-    grid.style.gridTemplateColumns = `repeat(${columns}, ${tileSize}px)`;
-    grid.style.gridAutoRows = `${tileSize}px`;
-
-    const totalTiles = columns * rows;
-    for (let i = 0; i < totalTiles; i += 1) {
-      const tile = document.createElement('div');
-      tile.className = 'gif-tile';
-      tile.style.setProperty('--hue-offset', `${Math.floor(Math.random() * 360)}deg`);
-      tile.style.setProperty('--hue-duration', `${(6 + Math.random() * 14).toFixed(2)}s`);
-      tile.style.setProperty('--hue-delay', `${(-Math.random() * 10).toFixed(2)}s`);
-
-      const head = document.createElement('img');
-      head.className = 'gif-tile__headbop';
-      head.alt = '';
-      head.src = `${HEADBOP_GIF_URL}?v=${Date.now()}-${i}`;
-      tile.appendChild(head);
-
-      const overlay = document.createElement('img');
-      overlay.className = 'gif-tile__overlay';
-      overlay.alt = '';
-      overlay.src = TILE_OVERLAY_URL;
-      tile.appendChild(overlay);
-
-      grid.appendChild(tile);
-    }
-
-    document.body.prepend(grid);
-  }
-
-  document.addEventListener('DOMContentLoaded', function () {
-    buildGifTileGrid();
-
-    // Add hue change on playButton hover/click
-    function setRandomHeadbopHues() {
-      const heads = document.querySelectorAll('.gif-tile__headbop');
-      heads.forEach(head => {
-        const hue = Math.floor(Math.random() * 360);
-        head.style.filter = `hue-rotate(${hue}deg)`;
-      });
-    }
-
-    function resetHeadbopHues() {
-      const heads = document.querySelectorAll('.gif-tile__headbop');
-      heads.forEach(head => {
-        head.style.filter = '';
-      });
-    }
-
-    const playButton = document.getElementById('playButton');
-    if (playButton) {
-      playButton.addEventListener('click', setRandomHeadbopHues);
-      // Only change hue on hover, start with no filter
-      playButton.addEventListener('mouseenter', setRandomHeadbopHues);
-      playButton.addEventListener('mouseleave', resetHeadbopHues);
-    }
-
-    let resizeTimer;
-    window.addEventListener('resize', function () {
-      window.clearTimeout(resizeTimer);
-      resizeTimer = window.setTimeout(buildGifTileGrid, 150);
-    });
-
-    // Make gif-tile-grid clickable
-    document.addEventListener('click', function(e) {
-      const grid = document.querySelector('.gif-tile-grid');
-      if (grid && (e.target === grid || grid.contains(e.target))) {
-        const playButton = document.getElementById('playButton');
-        if (playButton && playButton.style.display !== 'none') {
-          playButton.click();
-        }
-      }
-    });
-  });
+  // All headbob-related code removed
 
   // YouTube video IDs array - add your YouTube video IDs here
   const media = [];
