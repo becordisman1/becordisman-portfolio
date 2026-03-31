@@ -142,16 +142,26 @@
     const playButton = document.getElementById('playButton');
     if (!playButton) return;
 
-    // ensure headbop GIF is visible and forced to load/restart immediately (so it animates behind the button)
-    const headbop = document.getElementById('headbop');
-    if (headbop) {
-      headbop.style.display = '';
-      headbop.style.zIndex = '10000';
-      headbop.style.pointerEvents = 'none';
-      restartHeadbopGif();
+    // Move button to a random position within the viewport (not offscreen)
+    function moveButtonRandomly() {
+      const parent = playButton.offsetParent || document.body;
+      const parentRect = parent.getBoundingClientRect();
+      const btnRect = playButton.getBoundingClientRect();
+      const minX = 0;
+      const minY = 0;
+      const maxX = parentRect.width - btnRect.width;
+      const maxY = parentRect.height - btnRect.height;
+      const randX = Math.random() * maxX;
+      const randY = Math.random() * maxY;
+      playButton.style.left = randX + 'px';
+      playButton.style.top = randY + 'px';
+      playButton.style.transform = 'translate(0,0)';
     }
 
+    // Move on hover or click
+    playButton.addEventListener('mouseenter', moveButtonRandomly);
     playButton.addEventListener('click', function () {
+      moveButtonRandomly();
       const changeSound = document.getElementById('changeSound');
       soundEnabled = true;
       if (changeSound) {
@@ -159,21 +169,20 @@
         changeSound.play().catch(() => {});
       }
 
-      // hide the button and overlay gif
-      this.style.display = 'none';
-      const buttonOverlay = document.getElementById('buttonOverlay');
-      if (buttonOverlay) {
-        buttonOverlay.style.display = 'none';
-      }
-
-      // show headbop behind the button and restart animation
-      const headbopClick = document.getElementById('headbop');
-      if (headbopClick) {
-        // restart GIF on click in case you want a fresh loop
-        restartHeadbopGif();
-      }
-
-      showRandomMediaForScreen('randomVideo1', 'videoSource1', 'randomImage1');
+      // hide the button and overlay gif after a short delay
+      setTimeout(() => {
+        playButton.style.display = 'none';
+        const buttonOverlay = document.getElementById('buttonOverlay');
+        if (buttonOverlay) {
+          buttonOverlay.style.display = 'none';
+        }
+        // show headbop behind the button and restart animation
+        const headbopClick = document.getElementById('headbop');
+        if (headbopClick) {
+          restartHeadbopGif();
+        }
+        showRandomMediaForScreen('randomVideo1', 'videoSource1', 'randomImage1');
+      }, 300);
     });
   });
 
