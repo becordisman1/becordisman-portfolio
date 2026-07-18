@@ -1,4 +1,3 @@
-
 (function () {
   'use strict';
 
@@ -47,7 +46,7 @@
     'RNrUWTENN2c',
     'QOF0My1I9H0'
   ];
-  
+
   for (let i = 0; i < youtubeVideoIds.length; i++) {
     media.push({ type: 'youtube', videoId: youtubeVideoIds[i] });
   }
@@ -77,7 +76,7 @@
         if (headbop) {
           headbop.style.display = 'none';
         }
-        
+
         // Create or update YouTube iframe
         let iframe = document.getElementById(videoId + '_iframe');
         if (!iframe) {
@@ -90,7 +89,7 @@
           iframe.allowFullscreen = true;
           video.parentNode.insertBefore(iframe, video);
         }
-        
+
         // Set YouTube embed URL with autoplay and random start time
         const startTime = Math.floor(Math.random() * 120); // Random start between 0-120 seconds
         iframe.src = `https://www.youtube.com/embed/${item.videoId}?autoplay=1&start=${startTime}&mute=0`;
@@ -102,11 +101,11 @@
         if (headbop) {
           headbop.style.display = 'none';
         }
-        
+
         // Hide YouTube iframe if exists
         const iframe = document.getElementById(videoId + '_iframe');
         if (iframe) iframe.style.display = 'none';
-        
+
         if (videoSource) {
           videoSource.src = item.src;
           video.style.display = '';
@@ -123,11 +122,11 @@
       } else {
         // if you also want the headbop hidden for images, uncomment next lines
         // if (headbop) headbop.style.display = 'none';
-        
+
         // Hide YouTube iframe if exists
         const iframe = document.getElementById(videoId + '_iframe');
         if (iframe) iframe.style.display = 'none';
-        
+
         img.src = item.src;
         img.style.display = '';
         video.style.display = 'none';
@@ -140,9 +139,45 @@
     show();
   }
 
+  // Inject a glitchy/virus-esque animation style for the armed button state
+  function injectVirusStyle() {
+    if (document.getElementById('virus-style-tag')) return;
+    const style = document.createElement('style');
+    style.id = 'virus-style-tag';
+    style.textContent = `
+      @keyframes virusFlash {
+        0%   { background-color: #ff0033; box-shadow: 0 0 10px #ff0033, 0 0 20px #ff0033; }
+        25%  { background-color: #00ff00; box-shadow: 0 0 10px #00ff00, 0 0 25px #00ff00; }
+        50%  { background-color: #ff0033; box-shadow: 0 0 15px #ff0033, 0 0 30px #ff0033; }
+        75%  { background-color: #000000; box-shadow: 0 0 10px #ff0033, 0 0 20px #ff0033; }
+        100% { background-color: #ff0033; box-shadow: 0 0 10px #ff0033, 0 0 20px #ff0033; }
+      }
+      @keyframes virusJitter {
+        0%   { transform: translate(0, 0) rotate(0deg); }
+        20%  { transform: translate(-1px, 1px) rotate(-1deg); }
+        40%  { transform: translate(1px, -1px) rotate(1deg); }
+        60%  { transform: translate(-1px, -1px) rotate(-1deg); }
+        80%  { transform: translate(1px, 1px) rotate(1deg); }
+        100% { transform: translate(0, 0) rotate(0deg); }
+      }
+      .virus-armed {
+        animation: virusFlash 0.6s infinite, virusJitter 0.15s infinite;
+        clip-path: polygon(10% 0%, 90% 5%, 100% 40%, 95% 100%, 60% 90%, 20% 100%, 0% 60%, 5% 20%);
+        border: 2px solid #00ff00 !important;
+        color: #fff !important;
+        font-family: 'Courier New', monospace;
+        text-shadow: 1px 1px 2px #000;
+      }
+    `;
+    document.head.appendChild(style);
+  }
+
   document.addEventListener('DOMContentLoaded', function () {
     const playButton = document.getElementById('playButton');
     if (!playButton) return;
+
+    let armed = false; // tracks whether the first click has happened
+    const originalText = playButton.textContent;
 
     // Move button to a random position within the viewport (not offscreen)
     function moveButtonRandomly() {
@@ -164,6 +199,17 @@
     playButton.addEventListener('mouseenter', moveButtonRandomly);
     playButton.addEventListener('click', function () {
       moveButtonRandomly();
+
+      if (!armed) {
+        // First click: arm it, glitch it out, don't play yet
+        armed = true;
+        injectVirusStyle();
+        playButton.classList.add('virus-armed');
+        playButton.textContent = 'WARNING';
+        return;
+      }
+
+      // Second click: proceed with original play behavior
       const changeSound = document.getElementById('changeSound');
       soundEnabled = true;
       if (changeSound) {
@@ -204,13 +250,13 @@
 
       // Create mailto link
       const mailtoLink = `mailto:becord9000@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`)}`;
-      
+
       // Open email client
       window.location.href = mailtoLink;
 
       // Show success message
       formStatus.innerHTML = '<div class="alert alert-success">Opening your email client...</div>';
-      
+
       // Reset form after a delay
       setTimeout(() => {
         contactForm.reset();
