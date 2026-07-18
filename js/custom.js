@@ -96,42 +96,8 @@
     show();
   }
 
-  // Inject glitchy/virus-esque animation style for the armed button state
-  function injectVirusStyle() {
-    if (document.getElementById('virus-style-tag')) return;
-    const style = document.createElement('style');
-    style.id = 'virus-style-tag';
-    style.textContent = `
-      @keyframes virusFlash {
-        0%   { background-color: #ff0033; box-shadow: 0 0 10px #ff0033, 0 0 20px #ff0033; }
-        25%  { background-color: #00ff00; box-shadow: 0 0 10px #00ff00, 0 0 25px #00ff00; }
-        50%  { background-color: #ff0033; box-shadow: 0 0 15px #ff0033, 0 0 30px #ff0033; }
-        75%  { background-color: #000000; box-shadow: 0 0 10px #ff0033, 0 0 20px #ff0033; }
-        100% { background-color: #ff0033; box-shadow: 0 0 10px #ff0033, 0 0 20px #ff0033; }
-      }
-      @keyframes virusJitter {
-        0%   { transform: translate(0, 0) rotate(0deg); }
-        20%  { transform: translate(-1px, 1px) rotate(-1deg); }
-        40%  { transform: translate(1px, -1px) rotate(1deg); }
-        60%  { transform: translate(-1px, -1px) rotate(-1deg); }
-        80%  { transform: translate(1px, 1px) rotate(1deg); }
-        100% { transform: translate(0, 0) rotate(0deg); }
-      }
-      #playButton.virus-armed {
-        animation: virusFlash 0.6s infinite, virusJitter 0.15s infinite;
-        clip-path: polygon(10% 0%, 90% 5%, 100% 40%, 95% 100%, 60% 90%, 20% 100%, 0% 60%, 5% 20%);
-        border: 2px solid #00ff00 !important;
-        color: #fff !important;
-        font-family: 'Courier New', monospace;
-        text-shadow: 1px 1px 2px #000;
-      }
-    `;
-    document.head.appendChild(style);
-  }
-
   document.addEventListener('DOMContentLoaded', function () {
     const playButton = document.getElementById('playButton');
-    const movingButtonText = document.getElementById('movingButtonText');
     if (!playButton) return;
 
     let armed = false;
@@ -155,9 +121,7 @@
 
       if (!armed) {
         armed = true;
-        injectVirusStyle();
-        playButton.classList.add('virus-armed');
-        if (movingButtonText) movingButtonText.textContent = 'WARNING';
+        playButton.classList.add('armed-green');
         console.log('[playButton] armed - click again to play');
         return;
       }
